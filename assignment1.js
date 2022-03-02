@@ -3,6 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
   let seriesOfThree = document.querySelector("#series3");
   let seriesOfFour = document.querySelector("#series4");
   // image option
+  
   let imgArray = [
     {
       name: "Angular",
