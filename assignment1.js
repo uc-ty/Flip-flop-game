@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     {
       name: "CSharp",
-      img: "image/CSHarp.png",
+      img: "image/CSharp.png",
     },
     {
       name: "CSS3",
