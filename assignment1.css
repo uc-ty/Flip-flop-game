@@ -3,7 +3,6 @@ html,
   justify-content: center;
   align-items: center;
 }
-
 html {
   height: 100vh;
 }
@@ -39,7 +38,6 @@ html,
 #timer {
   margin: 0.4rem;
 }
-
 #bottom {
   justify-content: space-around;
   padding: 10px;

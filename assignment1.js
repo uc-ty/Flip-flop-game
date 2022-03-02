@@ -2,8 +2,8 @@ document.addEventListener("DOMContentLoaded", () => {
   let seriesOfTwo = document.querySelector("#series2");
   let seriesOfThree = document.querySelector("#series3");
   let seriesOfFour = document.querySelector("#series4");
+  let cardId = [];
   // image option
-  
   let imgArray = [
     {
       name: "Angular",
@@ -127,7 +127,7 @@ document.addEventListener("DOMContentLoaded", () => {
       var card = document.createElement("img");
       card.setAttribute("src", "image/test.png");
       card.className = "frontImg";
-      card.setAttribute("data-id", i);
+      card.setAttribute("id", i);
       grid.appendChild(card);
     }
   }
@@ -234,10 +234,23 @@ document.addEventListener("DOMContentLoaded", () => {
 
   //flip the card
 
-  function flipCard() {
-    let imgId = this.getAttribute("data-id");
+  function flipCard(event) {
+    let imgId = this.getAttribute("id");
     cardsChosen.push(duplicateImg[imgId].name);
     cardsChosenId.push(imgId);
+    console.log("img id", cardsChosenId);
+    console.log("url is", cardsChosen);
+    const toFindDuplicates = (cardsChosenId) =>
+      cardsChosenId.filter(
+        (item, index) => cardsChosenId.indexOf(item) !== index
+      );
+    const data = toFindDuplicates(cardsChosenId);
+    if (data.length != 0) {
+      cardsChosenId.pop();
+      cardsChosen.pop();
+      console.log("data is", cardId, cardsChosen);
+    }
+    console.log("card id is", event.currentTarget.id);
     this.setAttribute("src", duplicateImg[imgId].img);
     if (cardsChosen.length === 2 && seriesOfTwo.checked) {
       setTimeout(checkForMatch, 500);
@@ -289,7 +302,7 @@ document.addEventListener("DOMContentLoaded", () => {
       timer.value = second -= 1;
       if (second < 0) {
         clearInterval(interval);
-        alert("Game Over");
+        resultDisplay.innerHTML = "Sorry! You just lost this game Try Again";
         flipAllCard();
         timer.value = 60;
       }
