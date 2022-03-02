@@ -238,8 +238,6 @@ document.addEventListener("DOMContentLoaded", () => {
     let imgId = this.getAttribute("id");
     cardsChosen.push(duplicateImg[imgId].name);
     cardsChosenId.push(imgId);
-    console.log("img id", cardsChosenId);
-    console.log("url is", cardsChosen);
     const toFindDuplicates = (cardsChosenId) =>
       cardsChosenId.filter(
         (item, index) => cardsChosenId.indexOf(item) !== index
@@ -248,9 +246,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (data.length != 0) {
       cardsChosenId.pop();
       cardsChosen.pop();
-      console.log("data is", cardId, cardsChosen);
     }
-    console.log("card id is", event.currentTarget.id);
     this.setAttribute("src", duplicateImg[imgId].img);
     if (cardsChosen.length === 2 && seriesOfTwo.checked) {
       setTimeout(checkForMatch, 500);
